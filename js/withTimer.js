@@ -64,13 +64,43 @@ function startQuiz() {
   startTimer();
 }
 
+// function displayQuestion() {
+//   document.getElementById("question").textContent = `Question ${
+//     currentQuestion + 1
+//   }: ${questions[currentQuestion].question}`;
+//   const optionsContainer = document.querySelector(".options");
+//   optionsContainer.innerHTML = "";
+//   // Shuffle options array
+//   const shuffledOptions = shuffleArray(questions[currentQuestion].options);
+//   shuffledOptions.forEach((option) => {
+//     const optionDiv = document.createElement("div");
+//     optionDiv.classList.add("option");
+//     optionDiv.innerHTML = `<input type="radio" name="answer" value="${option}"> ${option}`;
+//     optionsContainer.appendChild(optionDiv);
+//   });
+// }
+
 function displayQuestion() {
-  document.getElementById("question").textContent = `Question ${
-    currentQuestion + 1
-  }: ${questions[currentQuestion].question}`;
+  const questionContainer = document.getElementById("question");
+  questionContainer.innerHTML = ""; // Clear previous content
+
+  const questionNumberLine = document.createElement("div");
+  questionNumberLine.textContent = `Question ${currentQuestion + 1}: `;
+  questionNumberLine.style.textAlign = "center"; // Center alignment
+  questionNumberLine.style.color = "maroon"; // Maroon color
+  questionNumberLine.style.position = "relative"; // Set position to relative
+  questionNumberLine.style.paddingBottom = "10px"; // Offset beneath the text
+  questionNumberLine.style.borderBottom = "1px solid black"; // Underline
+
+  const questionTextLine = document.createElement("div");
+  questionTextLine.textContent = questions[currentQuestion].question;
+  questionTextLine.style.marginTop = "20px";
+
+  questionContainer.appendChild(questionNumberLine);
+  questionContainer.appendChild(questionTextLine);
+
   const optionsContainer = document.querySelector(".options");
-  optionsContainer.innerHTML = "";
-  // Shuffle options array
+  optionsContainer.innerHTML = ""; // Clear previous options
   const shuffledOptions = shuffleArray(questions[currentQuestion].options);
   shuffledOptions.forEach((option) => {
     const optionDiv = document.createElement("div");
@@ -78,6 +108,7 @@ function displayQuestion() {
     optionDiv.innerHTML = `<input type="radio" name="answer" value="${option}"> ${option}`;
     optionsContainer.appendChild(optionDiv);
   });
+  document.getElementById("next-question").style.display = "block";
 }
 
 function startTimer() {
