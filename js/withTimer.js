@@ -46,7 +46,7 @@ let questions = [
 ];
 
 let currentQuestion = 0;
-let timeLeft = 10;
+let timeLeft = 30;
 let timer;
 let score = 0;
 
