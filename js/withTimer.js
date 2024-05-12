@@ -46,11 +46,26 @@ let questions = [
 ];
 
 let currentQuestion = 0;
-let timeLeft = 30;
+let timeLeft = 36;
 let timer;
 let score = 0;
 
+// function startQuiz() {
+//   const username = document.getElementById("username").value;
+//   if (username.trim() === "") {
+//     alert("Please enter your name.");
+//     return;
+//   }
+//   // Shuffle questions array
+//   questions = shuffleArray(questions);
+//   document.getElementById("start-container").style.display = "none";
+//   document.getElementById("quiz-container").style.display = "block";
+//   displayQuestion();
+//   startTimer(); // Start the timer after displaying the first question
+// }
+
 function startQuiz() {
+  console.log("hello");
   const username = document.getElementById("username").value;
   if (username.trim() === "") {
     alert("Please enter your name.");
@@ -61,7 +76,7 @@ function startQuiz() {
   document.getElementById("start-container").style.display = "none";
   document.getElementById("quiz-container").style.display = "block";
   displayQuestion();
-  startTimer();
+  startTimer(); // Start the timer after displaying the first question
 }
 
 // function displayQuestion() {
@@ -112,7 +127,9 @@ function displayQuestion() {
 }
 
 function startTimer() {
+  console.log("Mdy");
   timer = setInterval(function () {
+    console.log("Yangon");
     if (timeLeft > 0) {
       timeLeft--;
       document.getElementById("time").textContent = timeLeft;
@@ -122,7 +139,7 @@ function startTimer() {
       document.querySelectorAll('input[type="radio"]').forEach((input) => {
         input.disabled = true;
       });
-      setTimeout(nextQuestion, 2000);
+      setTimeout(nextQuestion, 9000);
     }
   }, 1000);
 }
@@ -147,7 +164,7 @@ function checkAnswer() {
   document.querySelectorAll('input[type="radio"]').forEach((input) => {
     input.disabled = true;
   });
-  setTimeout(nextQuestion, 2000);
+  setTimeout(nextQuestion, 300);
 }
 
 function nextQuestion() {
